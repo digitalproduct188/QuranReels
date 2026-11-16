@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Ayat ريلز القرآن الكريم</title>
+<meta name="description" content="تطبيق لصنع ريلز (فيديوهات قصيرة) من آيات القرآن الكريم مع التلاوة والنص." />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" type="image/svg+xml" href="icon.svg" />
+<link rel="apple-touch-icon" href="icon-192.png" />
+<meta name="theme-color" content="#0b3d2e" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Amiri:wght@400;700&family=Amiri+Quran&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="canonical" href="https://ayat-reels.netlify.app/app/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="استوديو آيات — ريلز القرآن الكريم" />
+<meta property="og:description" content="اختر السورة والقارئ والقالب وصدّر ريلاً قرآنياً بدقة 4K." />
+<meta property="og:image" content="https://ayat-reels.netlify.app/app/icon-512.png" />
+<meta property="og:url" content="https://ayat-reels.netlify.app/app/" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <img class="logo-img" src="icon.svg" alt="شعار Ayat" width="56" height="56" />
+      <div class="brand-text">
+        <h1>آيات <span>Ayat</span></h1>
+        <p class="brand-tag">ريلز القرآن الكريم</p>
+      </div>
+    </div>
+    <p class="subtitle">أنشئ فيديوهات قصيرة (9:16) من آيات القرآن مع التلاوة والنص</p>
+  </header>
+
+  <main class="layout">
+    <section class="controls card">
+      <h2>إعدادات الريل</h2>
+
+      <div class="field">
+        <label for="surah">السورة</label>
+        <select id="surah"></select>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="fromAyah">من آية</label>
+          <input type="number" id="fromAyah" min="1" value="1" />
+        </div>
+        <div class="field">
+          <label for="toAyah">إلى آية</label>
+          <input type="number" id="toAyah" min="1" value="7" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="reciter">القارئ</label>
+        <select id="reciter">
+          <option value="ar.alafasy">مشاري راشد العفاسي</option>
+          <option value="ar.abdurrahmaansudais">عبد الرحمن السديس</option>
+          <option value="ar.saud_ash_shuraim">سعود الشريم</option>
+          <option value="ar.yasseradossari">ياسر الدوسري</option>
+          <option value="ar.abdulbasitmurattal">عبد الباسط (مرتل)</option>
+          <option value="ar.husary">محمود خليل الحصري</option>
+          <option value="ar.minshawi">محمد صديق المنشاوي</option>
+          <option value="ar.mahermuaiqly">ماهر المعيقلي</option>
+          <option value="ar.ahmedajamy">أحمد العجمي</option>
+          <option value="ar.abdulsamad">عبد الباسط (مجود)</option>
+          <option value="ar.ghamdi">سعد الغامدي</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>القالب (16)</label>
+        <select id="tplSelect"></select>
+      </div>
+      <div class="tpl-grid" id="tplGrid" style="display:none;"></div>
+
+      <div class="row">
+        <div class="field">
+          <label>نسبة العرض</label>
+          <select id="aspect">
+            <option value="9:16">9:16 (Reels)</option>
+            <option value="1:1">1:1 (Square)</option>
+            <option value="4:5">4:5 (Portrait)</option>
+            <option value="16:9">16:9 (Landscape)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>الجودة</label>
+          <select id="quality">
+            <option value="1080">HD 1080</option>
+            <option value="2160">4K 2160</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label><input type="checkbox" id="wordSync" checked /> مزامنة كلمة بكلمة</label>
+      </div>
+
+      <input type="hidden" id="pexelsKey" value="8GvJaGJFXhjc15sOxQTyMP5qGaE0oHz4QWxW7actamZPc58sG54YyivU" />
+      <div class="row">
+        <div class="field">
+          <label>بحث خلفية (إنجليزي)</label>
+          <input type="text" id="pexelsQuery" value="nature" />
+        </div>
+        <div class="field">
+          <label>&nbsp;</label>
+          <button id="pexelsBtn" class="btn primary" type="button">جلب فيديو</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>فيديو خلفية (Pexels)</label>
+        <select id="pexelsVideo"><option value="">— لا يوجد (استخدم التدرج) —</option></select>
+      </div>
+
+      <div class="field">
+        <label for="fontSize">حجم الخط: <span id="fontSizeVal">46</span></label>
+        <input type="range" id="fontSize" min="28" max="72" value="46" />
+      </div>
+
+      <div class="field">
+        <label for="showTranslation">إظهار الترجمة (إنجليزية)</label>
+        <input type="checkbox" id="showTranslation" checked disabled />
+      </div>
+
+      <div class="field">
+        <label>شعار / لوقو (PNG شفاف)</label>
+        <input type="file" id="logoFile" accept="image/*" />
+        <label style="margin-top:4px;font-size:12px;">أو رابط صورة:</label>
+        <input type="url" id="logoUrl" placeholder="https://.../logo.png" />
+        <label style="margin-top:6px;display:flex;align-items:center;gap:6px;">
+          <input type="checkbox" id="logoEnabled" /> إظهار الشعار في الفيديو
+        </label>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>موضع الشعار</label>
+          <select id="logoPos">
+            <option value="tl">أعلى يسار</option>
+            <option value="tr">أعلى يمين</option>
+            <option value="bl">أسفل يسار</option>
+            <option value="br" selected>أسفل يمين</option>
+            <option value="center">وسط</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>حجم الشعار: <span id="logoSizeVal">12</span>%</label>
+          <input type="range" id="logoSize" min="5" max="30" value="12" />
+        </div>
+      </div>
+      <div class="field">
+        <label>شفافية الشعار: <span id="logoOpacityVal">90</span>%</label>
+        <input type="range" id="logoOpacity" min="20" max="100" value="90" />
+      </div>
+
+      <div class="actions">
+        <button id="listenBtn" class="btn primary">استماع</button>
+        <button id="previewBtn" class="btn primary">معاينة</button>
+        <button id="recordBtn" class="btn accent">تسجيل ريل</button>
+        <button id="stopBtn" class="btn danger" disabled>إيقاف</button>
+        <button id="downloadBtn" class="btn accent" type="button" style="display:none;">تحميل الفيديو</button>
+      </div>
+      <div class="field">
+        <label for="muteAudio" class="mute-row">
+          <input type="checkbox" id="muteAudio" />
+          <span>كتم الصوت <b>أثناء التسجيل فقط</b> — الفيديو المحمّل يبقى بالصوت</span>
+        </label>
+      </div>
+      <div class="row">
+        <button id="prevBtn" class="btn primary" disabled>السابق</button>
+        <button id="nextBtn" class="btn primary" disabled>التالي</button>
+      </div>
+
+      <div class="status" id="status">جاهز.</div>
+      <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+    </section>
+
+    <section class="preview card">
+      <h2>المعاينة (<span id="aspectLabel">9:16</span>)</h2>
+      <div class="canvas-wrap">
+        <canvas id="canvas" width="1080" height="1920"></canvas>
+        <video id="bgVideo" crossorigin="anonymous" playsinline muted loop preload="auto" disablepictureinpicture style="display:none;"></video>
+      </div>
+      <div class="hint">الأفضل للريلز: MP4 (H.264/AAC) · 1080×1920 · 30 إطاراً. وإن لم يدعمه الهاتف يُصدَّر WebM تلقائياً (مقبول في يوتيوب). 4K على سطح المكتب.</div>
+    </section>
+  </main>
+
+  <section class="clips-section card">
+    <h2>مقاطعك (My Clips)</h2>
+    <div id="clipsList" class="invoices-list"></div>
+  </section>
+
+  <footer class="app-footer">
+    <p>النص: AlQuran Cloud · التلاوة: everyayah.com · كل الملفات تُحفظ على جهازك فقط</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

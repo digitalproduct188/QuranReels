@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<script>document.documentElement.classList.add("js");addEventListener("load",function(){setTimeout(function(){if(!window.AYAT_READY){document.querySelectorAll(".reveal").forEach(function(e){e.classList.add("in")});}},2500);});</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>لوحة التحكم — آيات Ayat</title>
+<meta name="description" content="تابع مقاطعك المحفوظة وإحصاءاتك في لوحة تحكم آيات." />
+<meta name="theme-color" content="#04110b" />
+<meta name="robots" content="noindex,follow" />
+<link rel="icon" type="image/svg+xml" href="app/icon.svg" />
+<link rel="apple-touch-icon" href="app/icon-192.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Amiri:wght@400;700&family=Amiri+Quran&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="canonical" href="https://ayat-reels.netlify.app/dashboard.html" />
+<meta property="og:url" content="https://ayat-reels.netlify.app/dashboard.html" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <img src="app/icon.svg" alt="شعار آيات" width="38" height="38" />
+      <span class="brand-name">آيات <small>AYAT</small></span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">الرئيسية</a>
+      <a href="templates.html">القوالب</a>
+      <a href="pricing.html">الأسعار</a>
+      <a href="blog.html">المدونة</a>
+      <a href="help.html">المساعدة</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn sm" href="app/index.html">الاستوديو</a>
+      <button class="burger" id="burger" aria-label="القائمة" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section tight">
+    <div class="container">
+      <div class="dash-top">
+        <div>
+          <span class="eyebrow">لوحة التحكم</span>
+          <h1 style="font-size:clamp(26px,3.6vw,38px)">أهلاً، <span data-user-name>زائر</span></h1>
+          <p class="muted" style="font-size:14px">كل مقاطعك محفوظة محلياً على هذا الجهاز.</p>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <a class="btn gold sm" href="app/index.html">+ مقطع جديد</a>
+          <a class="btn ghost sm" href="#" data-logout>خروج</a>
+        </div>
+      </div>
+
+      <div class="dash-stats">
+        <div class="dash-stat"><b id="statClips">0</b><span>مقاطع محفوظة</span></div>
+        <div class="dash-stat"><b id="statExtra">0</b><span>قوالب مستخدمة</span></div>
+        <div class="dash-stat"><b id="statMb">0</b><span>ميغابايت</span></div>
+        <div class="dash-stat"><b>4K</b><span>أقصى جودة</span></div>
+      </div>
+
+      <div class="card">
+        <h2 style="font-size:18px;margin-bottom:16px">مقاطعي</h2>
+        <div id="clipsList"></div>
+      </div>
+
+      <p class="center muted small" style="margin-top:18px">
+        تُحفظ بيانات المقاطع في <code>localStorage</code> بعد كل تصدير من الاستوديو، ولا تُرسل إلى أي خادم.
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <img src="app/icon.svg" alt="آيات" width="38" height="38" />
+          <span class="brand-name">آيات <small>AYAT</small></span>
+        </a>
+        <p>استوديو عربي لصناعة مقاطع قرآنية قصيرة بنص مصحف المدينة المنورة، وبجودة تليق بكلام الله.</p>
+      </div>
+      <div class="footer-col">
+        <h4>المنتج</h4>
+        <a href="app/index.html">الاستوديو</a>
+        <a href="templates.html">القوالب</a>
+        <a href="pricing.html">الأسعار</a>
+        <a href="dashboard.html">لوحة التحكم</a>
+      </div>
+      <div class="footer-col">
+        <h4>المصادر</h4>
+        <a href="help.html">المساعدة</a>
+        <a href="blog.html">المدونة</a>
+        <a href="about.html">عن آيات</a>
+      </div>
+      <div class="footer-col">
+        <h4>قانوني</h4>
+        <a href="privacy.html">الخصوصية</a>
+        <a href="terms.html">الشروط</a>
+        <a href="contact.html">تواصل معنا</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> آيات Ayat — جميع الحقوق محفوظة.</span>
+      <span>نص القرآن برسم مصحف المدينة المنورة — مجمع الملك فهد.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

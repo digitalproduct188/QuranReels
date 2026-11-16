@@ -1,0 +1,4 @@
+# /app → /app/ (Netlify + Cloudflare Pages)
+# ملاحظة: /proxy لا يُعاد توجيهه هنا؛ Cloudflare يخدمه عبر functions/proxy.js
+# وNetlify عبر netlify.toml.
+/app  /app/  301
